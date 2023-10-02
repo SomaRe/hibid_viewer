@@ -1,0 +1,29 @@
+#container{
+    margin: 0 2vw;
+}
+
+.card{
+    width: 250px;
+    cursor: pointer;
+}
+
+.card img{
+    margin-top: 10px;
+    width: 100%;
+    height: 200px;
+    object-fit:contain;
+}
+
+/* fixed number of lines */
+.card h5{
+    font-size: 20px;
+    min-height: 2em;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+#pageNumber{
+    width: 40px;
+}
