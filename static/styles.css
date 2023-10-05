@@ -60,6 +60,14 @@
 
 /* Add CSS to control the categories-container's visibility */
 @media (max-width: 767px) {
+    .card{
+        width: 150px;
+        font-size: 80%;
+    }
+    .card h5{
+        font-size: 14px;
+    }
+
     .toggle-categories{
         display: block;
     }
