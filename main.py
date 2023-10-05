@@ -9,6 +9,10 @@ from sqlalchemy import create_engine, Column, Integer, String, Boolean, ForeignK
 from sqlalchemy.orm import declarative_base, sessionmaker
 from sqlalchemy.orm.exc import NoResultFound
 
+# get port number from PORT.txt
+with open('PORT.txt', 'r') as f:
+    port = int(f.read())
+
 # Define the SQLAlchemy Base
 Base = declarative_base()
 
@@ -377,4 +381,4 @@ def search():
     return jsonify({'res':results, 'total_results':total_results})
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5015, threaded=True, debug=True)
+    app.run(host='0.0.0.0', port=port, threaded=True, debug=True)
