@@ -14,6 +14,10 @@
     object-fit:contain;
 }
 
+.card .text{
+    font-weight: bold;
+}
+
 /* fixed number of lines */
 .card h5{
     font-size: 20px;
@@ -26,4 +30,56 @@
 
 #pageNumber{
     width: 40px;
+}
+
+#close-categories{
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.toggle-categories{
+    display: none;
+}
+
+.cat-plus-btn{
+    padding: 0.1rem;
+    line-height: 1;
+}
+
+.cat-tree-row{
+    width: 100%;
+}
+
+.cat-tree-section{
+    margin-left: 5%;
+}
+
+/* Add CSS to control the categories-container's visibility */
+@media (max-width: 767px) {
+    .toggle-categories{
+        display: block;
+    }
+    #categories-container-main{
+        display: none;
+        position: fixed;
+        top: 0;
+        overflow-y: scroll;
+        z-index: 100;
+        background-color: white;
+         width: 100vw;
+        height: 100vh;
+    }
+    
+    #categories-container{
+        margin-top: 5vh;
+    }
+
+    #close-categories{
+        display: block;
+    }
+    
 }

@@ -115,8 +115,10 @@ def map_lot_attributes(results):
             'thumbnailLocation':item.featuredPicture__thumbnailLocation,
             'lead':item.lead,
             'lotId':item.lotId,
+            'auctionId':item.auctionId,
             'category':item.category,
             'description':item.description,
+            'eventDateEnd':item.eventDateEnd.strftime('%Y-%m-%d'),
             } for item in results]
     
     return results
@@ -375,4 +377,4 @@ def search():
     return jsonify({'res':results, 'total_results':total_results})
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=1515, threaded=True, debug=True)
+    app.run(host='0.0.0.0', port=5015, threaded=True, debug=True)

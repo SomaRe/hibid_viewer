@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 
 <head>
     <meta charset="UTF-8">
@@ -11,36 +11,50 @@
 </head>
 
 <body>
-    <nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
-        <div class="container-fluid mx-3">
-            <a class="navbar-brand" href="#">Hibid Viewer</a>
-            <div class="d-flex end-group">
-                <div class="pageNumberGroup text-light">
-                    <input type="number" id="pageNumber" placeholder="page number"><span>/</span><span
-                        id="totalPages">0</span>
+    <nav class="navbar" data-bs-theme="dark">
+        <div class="container-fluid">
+            <div class="row" style="width: 100%;">
+                <div class="col-8">
+                    <a class="navbar-brand" href="#">Hibid Viewer</a>
                 </div>
-                <form class="d-flex ms-5" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" id="searchQuery" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit" id="search">Search</button>
-                </form>
+                <div class="col-4 col-sm-2">
+                    <div class="d-flex justify-content-end flex-nowrap pageNumberGroup">
+                        <input type="number" id="pageNumber" placeholder="page number">/
+                        <span id="totalPages">0</span>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-2 mt-2 mt-sm-0">
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="Search" id="searchQuery"
+                            aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit" id="search">Search</button>
+                    </form>
+                </div>
             </div>
         </div>
     </nav>
+
     <div class="container-fluid">
         <div class="row">
-            <div class="col-2">
-                <div id="categories-container"></div>
-                <button id="filter-button" class="btn btn-info mt-3">filter</button>
+            <div class="toggle-categories">
+                <button id="toggle-button" class="btn btn-outline-info">Filter</button>
             </div>
-            <div class="col-10">
+            <div class="col-12 col-md-2" id="categories-container-main">
+                <div id="close-categories">X</div>
+                <div id="categories-container"></div>
+                <button id="filter-button" class="btn btn-info mt-3">save</button>
+            </div>
+            <div class="col-12 col-md-10">
                 <div id="container" class="d-flex flex-wrap justify-content-center"></div>
             </div>
         </div>
     </div>
+    
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src={{ url_for('static', filename='script.js' ) }}></script>
 </body>
 
