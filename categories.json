@@ -92,7 +92,9 @@
                 "Lamps": {},
                 "Ceiling Fans": {},
                 "Chandeliers": {},
-                "Outdoor Lighting": {}
+                "Outdoor Lighting": {},
+                "Lamp Shades": {},
+                "Floor & Box Fans": {}
             },
             "Bed / Bath Items": {},
             "Kitchen / Housewares": {
@@ -114,7 +116,9 @@
             "Grills": {},
             "Carpet / Rugs": {},
             "Movies": {},
-            "Clocks": {}
+            "Clocks": {},
+            "Other Personal Property": {},
+            "Home Fragrance / Candles": {}
         },
         "Lighting": {},
         "Art & Craft Supplies": {},
@@ -200,7 +204,8 @@
         },
         "Construction Attachments": {
             "Winch": {},
-            "Fork, Pallet": {}
+            "Fork, Pallet": {},
+            "Coupler / Quick Coupler": {}
         },
         "Forestry Equipment": {
             "Log Splitters": {}
@@ -220,7 +225,11 @@
         },
         "Aggregate Equipment": {
             "Screen": {}
-        }
+        },
+        "Grain Handling / Storage Equipment": {
+            "Grain Vacs": {}
+        },
+        "Irrigation Equipment": {}
     },
     "Fashion": {
         "Women's Shoes": {
@@ -290,7 +299,8 @@
         "Watches": {
             "Parts / Tools / Accessories": {},
             "Men's Watches": {},
-            "Women's Watches": {}
+            "Women's Watches": {},
+            "Pocket Watches": {}
         }
     },
     "Cars & Vehicles": {
@@ -309,7 +319,8 @@
             "Fuel Tank": {},
             "Tires": {},
             "Fifth Wheel": {},
-            "Headache Rack": {}
+            "Headache Rack": {},
+            "Battery Box": {}
         },
         "RVs": {
             "Class B Motorhomes": {}
@@ -483,7 +494,8 @@
             "Figurines": {},
             "Cultures / Ethnicities": {},
             "Tobacciana / Lighters / Tobacco Pipes": {},
-            "Comicbooks": {}
+            "Comicbooks": {},
+            "Railroad": {}
         },
         "Antiques": {
             "Maps / Globes": {},
@@ -496,5 +508,10 @@
             "Antique Lamps": {}
         },
         "Modern Militaria": {}
+    },
+    "Boats & Aviation": {
+        "Boats": {
+            "Small Boats": {}
+        }
     }
 }
