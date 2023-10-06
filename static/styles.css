@@ -59,6 +59,9 @@
 
 /* Add CSS to control the categories-container's visibility */
 @media (max-width: 767px) {
+    #container{
+        margin: 0 1vw;
+    }
     .card{
         width: 150px;
         font-size: 80%;
