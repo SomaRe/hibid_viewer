@@ -139,8 +139,14 @@ def convert_core():
     session = Session()
 
     # Check which files have been processed already
-    with open('file_status.json', 'r') as f:
-        file_status = json.load(f)
+    if not os.path.exists('file_status.json'):
+        # If it doesn't exist, create a new empty file_status.json
+        file_status = {
+            "files_converted_to_database": [],
+            "files_processed_for_categories": []
+        }
+        with open('file_status.json', 'w') as f:
+            json.dump(file_status, f, indent=4)
     
     processed_files = set(file_status["files_converted_to_database"])
     files_to_process = [file for file in os.listdir(auctions_file_loc) if file not in processed_files]
@@ -246,11 +252,22 @@ def convert_core():
 # process json file to categories.json
 def process_core():
     # read categories.json
+    if not os.path.exists('categories.json'):
+        # If it doesn't exist, create a new empty categories.json
+        categories = {}
+        with open('categories.json', 'w') as f:
+            json.dump(categories, f, indent=4)
     with open('categories.json', 'r') as f:
         categories = json.load(f)
 
-    with open('file_status.json', 'r') as f:
-        file_status = json.load(f)
+    if not os.path.exists('file_status.json'):
+        # If it doesn't exist, create a new empty file_status.json
+        file_status = {
+            "files_converted_to_database": [],
+            "files_processed_for_categories": []
+        }
+        with open('file_status.json', 'w') as f:
+            json.dump(file_status, f, indent=4)
 
     files = os.listdir(auctions_file_loc)
 
@@ -299,15 +316,32 @@ def config():
 def convert():
     return convert_core()
 
+import json
+import os
+
 @app.route('/convertAll')
 def convertAll():
-    # read file_status.json and remove all files from files_converted_to_database
+    # Check if file_status.json exists
+    if not os.path.exists('file_status.json'):
+        # If it doesn't exist, create a new file with the desired structure
+        file_status = {
+            "files_converted_to_database": [],
+            "files_processed_for_categories": []
+        }
+        with open('file_status.json', 'w') as f:
+            json.dump(file_status, f, indent=4)
+    
+    # Read the file and remove all files from files_converted_to_database
     with open('file_status.json', 'r') as f:
         file_status = json.load(f)
         file_status["files_converted_to_database"] = []
-        with open('file_status.json', 'w') as f:
-            json.dump(file_status, f, indent=4)
+
+    # Write the updated data back to file_status.json
+    with open('file_status.json', 'w') as f:
+        json.dump(file_status, f, indent=4)
+    
     return convert_core()
+
 
 @app.route('/process')
 def process():
@@ -315,12 +349,25 @@ def process():
 
 @app.route('/processAll')
 def processAll():
-    # read file_status.json and remove all files from files_processed_for_categories
+    # Check if file_status.json exists
+    if not os.path.exists('file_status.json'):
+        # If it doesn't exist, create a new file with the desired structure
+        file_status = {
+            "files_converted_to_database": [],
+            "files_processed_for_categories": []
+        }
+        with open('file_status.json', 'w') as f:
+            json.dump(file_status, f, indent=4)
+    
+    # Read the file and remove all files from files_processed_for_categories
     with open('file_status.json', 'r') as f:
         file_status = json.load(f)
         file_status["files_processed_for_categories"] = []
-        with open('file_status.json', 'w') as f:
-            json.dump(file_status, f, indent=4)
+
+    # Write the updated data back to file_status.json
+    with open('file_status.json', 'w') as f:
+        json.dump(file_status, f, indent=4)
+    
     return process_core()
 
 
