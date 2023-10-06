@@ -66,6 +66,10 @@
     .card h5{
         font-size: 14px;
     }
+    .card img{
+        height: 125px;
+        object-fit:contain;
+    }
 
     .toggle-categories{
         display: block;
