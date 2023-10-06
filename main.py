@@ -13,6 +13,10 @@ from sqlalchemy.orm.exc import NoResultFound
 with open('PORT.txt', 'r') as f:
     port = int(f.read())
 
+# get auctions_file_loc.txt file
+with open('AUCTIONS_FILE_LOC.txt', 'r') as f:
+    auctions_file_loc = f.read()
+
 # Define the SQLAlchemy Base
 Base = declarative_base()
 
@@ -139,7 +143,7 @@ def convert_core():
         file_status = json.load(f)
     
     processed_files = set(file_status["files_converted_to_database"])
-    files_to_process = [file for file in os.listdir('auctions') if file not in processed_files]
+    files_to_process = [file for file in os.listdir(auctions_file_loc) if file not in processed_files]
 
     # Fetch existing items from the database and store in a set for faster lookups
     existing_items = {(item.lotId, item.auctionId) for item in session.query(Items.lotId, Items.auctionId).all()}
@@ -147,7 +151,7 @@ def convert_core():
     items_data_list = []
 
     for file in files_to_process:
-        with open(os.path.join('auctions', file), 'r') as json_file:
+        with open(os.path.join(auctions_file_loc, file), 'r') as json_file:
             data = json.load(json_file)
 
         auction = data['auction']
@@ -248,11 +252,11 @@ def process_core():
     with open('file_status.json', 'r') as f:
         file_status = json.load(f)
 
-    files = os.listdir('auctions')
+    files = os.listdir(auctions_file_loc)
 
     for file in files:
         if file not in file_status["files_processed_for_categories"]:
-            with open(os.path.join('auctions', file), 'r') as json_file:
+            with open(os.path.join(auctions_file_loc, file), 'r') as json_file:
                 data = json.load(json_file)
                 print(f'Processing {file} for categories')
 

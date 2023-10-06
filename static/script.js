@@ -19,13 +19,11 @@ function createCards(data) {
       // Use template literals to format the card as a string
       let cardHTML = `
               <div class="card m-2 ${categoryClasses}" data-href="https://www.hibid.com/lot/${item["lotId"]}">
-                  <img src="${item["thumbnailLocation"]}" class="card-img-top">
+              <h5 class="card-title">${item["lead"]}</h5>    
+              <img src="${item["thumbnailLocation"]}" class="card-img-top">
                   <div class="card-body">
-                      <h5 class="card-title">${item["lead"]}</h5>
-                      <p class="card-text">${item["description"]}</p>
                       <p class="card-text text">Date: ${item["eventDateEnd"]}</p>
                       <div class="d-flex justify-content-between">
-                        <p class="card-text fs-6 text">High Bid: ${item["highBid"]}</p>
                       <div>
                     </div>
               </div>
