@@ -2,3 +2,5 @@ data.sqlite
 auctions
 PORT.txt
 AUCTIONS_FILE_LOC.txt
+categories.json
+file_status.json
