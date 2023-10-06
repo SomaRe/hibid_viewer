@@ -1,0 +1,517 @@
+{
+    "Business & Industrial": {
+        "Business / Retail": {
+            "Janitorial": {
+                "Cleaning Equipment": {},
+                "Cleaners / Cleaning Supplies": {},
+                "Dispensers": {}
+            },
+            "Displays / Display Cases": {},
+            "Security / Surveillance": {
+                "Professional": {}
+            },
+            "Racks / Shelving": {},
+            "Signage": {},
+            "Carts / Baskets": {},
+            "Point-of-Sale Equipment": {},
+            "Retail Marking Guns": {}
+        },
+        "Restaurant / Food Industry": {
+            "Pans / Sheets": {},
+            "Ovens": {},
+            "Beverage Service": {},
+            "Food Warmers / Wells / Dispensers": {},
+            "Ranges": {},
+            "Fryers": {},
+            "Serving Line Utensils": {},
+            "Food Preparation": {},
+            "Cabinets / Racks": {},
+            "Linens / Table Covers": {},
+            "Refrigerators": {
+                "Professional": {}
+            },
+            "Sinks": {
+                "Professional": {}
+            },
+            "Bar Machines": {},
+            "Grills": {
+                "Professional": {}
+            },
+            "Meat Slicers": {},
+            "Tools / Utensils": {
+                "Professional": {}
+            },
+            "Glassware": {},
+            "Vending Machines": {},
+            "Dinnerware / Flatware": {},
+            "Bar Signs": {},
+            "Mixers": {
+                "Professional": {}
+            }
+        },
+        "Medical Supplies / Lab Equipment": {},
+        "Buildings": {
+            "Storage ": {}
+        },
+        "Storage Buildings": {},
+        "Alternative Energy / Renewable Energy": {
+            "Ev Charging Stations": {},
+            "Solar Power": {
+                "Off-Grid Solar Systems": {},
+                "Panels & Panel Kits": {},
+                "Inverters, Parts & Accessories ": {},
+                "Grid-Tied Solar Systems": {}
+            }
+        }
+    },
+    "Home Goods & Decor": {
+        "Home Goods": {
+            "Appliances": {
+                "Washer / Dryers": {},
+                "Dishwashers": {},
+                "Refrigerators / Freezers": {},
+                "Heating / Air Conditioning": {},
+                "Ovens / Stoves": {}
+            },
+            "Food & Beverage": {
+                "White Wines": {},
+                "Wine & Spirits": {},
+                "Dessert & Sweet Wines": {},
+                "Chocolate": {},
+                "Cognac": {},
+                "Red Wines": {},
+                "Whiskey": {},
+                "Accessories": {},
+                "Sparkling Wines": {},
+                "Beer": {},
+                "Coffee": {}
+            },
+            "Lighting": {
+                "Light Bulbs": {},
+                "Fixtures / Sconces": {},
+                "Lamps": {},
+                "Ceiling Fans": {},
+                "Chandeliers": {},
+                "Outdoor Lighting": {},
+                "Lamp Shades": {},
+                "Floor & Box Fans": {}
+            },
+            "Bed / Bath Items": {},
+            "Kitchen / Housewares": {
+                "Other": {},
+                "Cookware": {},
+                "Dinnerware / Drinkware / Cutlery": {},
+                "Food Storage ": {}
+            },
+            "Other Items": {
+                "Other": {}
+            },
+            "Linens / Curtains": {},
+            "Small Appliances": {},
+            "Musical Instruments": {},
+            "Pet Food & Supplies": {},
+            "Music": {
+                "CDs / Records / Cassettes": {}
+            },
+            "Grills": {},
+            "Carpet / Rugs": {},
+            "Movies": {},
+            "Clocks": {},
+            "Other Personal Property": {},
+            "Home Fragrance / Candles": {}
+        },
+        "Lighting": {},
+        "Art & Craft Supplies": {},
+        "Fabric / Yarn / Sewing / Needlepoint": {}
+    },
+    "Construction & Farm": {
+        "Compactors": {
+            "Walk/Tow Behind": {}
+        },
+        "Components": {
+            "Water Pump": {}
+        },
+        "Building Supplies": {
+            "Doors": {},
+            "Flooring": {},
+            "Building Hardware": {},
+            "Windows": {},
+            "Other Building Materials": {},
+            "Fencing": {},
+            "Roofing": {},
+            "Plumbing": {},
+            "Drywall": {},
+            "Lumber": {},
+            "Insulation": {},
+            "Moulding": {}
+        },
+        "Attachments": {
+            "Hitch": {},
+            "Tires": {}
+        },
+        "Pumps": {},
+        "Shop / Warehouse": {
+            "Hoses": {},
+            "Ladders / Scaffolding": {},
+            "Electrical": {},
+            "Safety": {},
+            "Welding Accessories": {},
+            "Jacks": {},
+            "Parts / Accessories": {},
+            "Workbenches / Tables": {},
+            "Industrial Machines": {},
+            "Saws / Drills": {},
+            "Automotive": {},
+            "Pipe Bending / Threading": {},
+            "Tiedowns / Binders": {},
+            "Machining Tools": {},
+            "Fuel": {},
+            "Racks / Shelves": {},
+            "Scales / Hoists": {},
+            "Painting": {},
+            "Metalworking": {}
+        },
+        "Air Compressors": {},
+        "Pressure Washers": {},
+        "Welders": {},
+        "Turf Equipment": {
+            "Blowers, Sweepers & Vacuums": {},
+            "Sprayers": {},
+            "Golf Carts": {
+                "Electric": {}
+            }
+        },
+        "Tillage Equipment": {
+            "Field Cultivators": {},
+            "Land Rollers": {}
+        },
+        "Harvesters": {
+            "Headers": {
+                "Forage": {
+                    "Rotary": {}
+                },
+                "Row Crop": {}
+            }
+        },
+        "Livestock Equipment": {
+            "Water Tanks": {},
+            "Gates & Panels": {}
+        },
+        "Chemical Applicators": {
+            "Sprayers": {
+                "3 pt/Mounted": {}
+            }
+        },
+        "Construction Attachments": {
+            "Winch": {},
+            "Fork, Pallet": {},
+            "Coupler / Quick Coupler": {}
+        },
+        "Forestry Equipment": {
+            "Log Splitters": {}
+        },
+        "Storage Bins": {
+            "Liquid/Dry": {}
+        },
+        "Power Systems": {
+            "Generators": {
+                "Portable": {}
+            }
+        },
+        "Lifts": {
+            "Forklifts": {
+                "Other": {}
+            }
+        },
+        "Aggregate Equipment": {
+            "Screen": {}
+        },
+        "Grain Handling / Storage Equipment": {
+            "Grain Vacs": {}
+        },
+        "Irrigation Equipment": {}
+    },
+    "Fashion": {
+        "Women's Shoes": {
+            "Mules / Clogs": {},
+            "Slippers": {},
+            "Boots": {},
+            "Flats / Loafers": {},
+            "Sneakers / Athletic Shoes": {},
+            "Wedges": {},
+            "Rain Boots": {},
+            "Sandals": {},
+            "Heals / Pumps": {}
+        },
+        "Children's Clothing": {},
+        "Men's Clothing": {
+            "Tops": {},
+            "Activewear": {},
+            "Pajamas / Robes": {},
+            "Dresswear": {},
+            "Swimwear": {},
+            "Coats / Jackets": {},
+            "Bottoms": {},
+            "Undergarments / Socks": {}
+        },
+        "Men's Shoes": {
+            "Water Shoes": {},
+            "Sandals": {},
+            "Boots": {},
+            "Dress Shoes": {},
+            "Slippers": {},
+            "Hiking Boots": {},
+            "Sneakers / Athletic Shoes": {},
+            "Work Boots / Work Shoes": {}
+        },
+        "Women's Clothing": {
+            "Maternity": {},
+            "Pajamas / Robes": {},
+            "Tops": {},
+            "Activewear": {},
+            "Swimwear": {},
+            "Dresswear": {},
+            "Undergarments / Socks": {},
+            "Jumpsuits / Rompers": {},
+            "Coats / Jackets": {},
+            "Bottoms": {}
+        }
+    },
+    "Art": {
+        "Posters": {},
+        "Sculptures / Carvings / Statues": {},
+        "Prints / Lithographs": {},
+        "Paintings": {},
+        "Pottery / Ceramics": {}
+    },
+    "Jewelry, Watches & Gemstones": {
+        "Jewelry": {
+            "Fine Jewelry": {
+                "Earrings": {},
+                "Necklaces / Pendants": {},
+                "Rings": {},
+                "Jewelry Sets": {},
+                "Bracelets / Cuffs": {},
+                "Pins / Brooches": {}
+            },
+            "Fashion / Costume": {}
+        },
+        "Watches": {
+            "Parts / Tools / Accessories": {},
+            "Men's Watches": {},
+            "Women's Watches": {},
+            "Pocket Watches": {}
+        }
+    },
+    "Cars & Vehicles": {
+        "Medium Duty Trucks": {
+            "Pickup Trucks": {}
+        },
+        "Motorsports": {
+            "ATVs": {
+                "Recreation / Utility": {}
+            },
+            "Motorcycles": {
+                "Dirt Bike": {}
+            }
+        },
+        "Truck Components": {
+            "Fuel Tank": {},
+            "Tires": {},
+            "Fifth Wheel": {},
+            "Headache Rack": {},
+            "Battery Box": {}
+        },
+        "RVs": {
+            "Class B Motorhomes": {}
+        },
+        "Cars": {
+            "Sedans": {}
+        }
+    },
+    "Lawn & Garden": {
+        "Outdoor Power Equipment": {
+            "Lawn Mowers": {
+                "Walk-Behind": {},
+                "Riding": {}
+            },
+            "Chainsaws": {},
+            "Snow Blowers": {}
+        },
+        "Tools/Hand held items": {
+            "Power Tools": {
+                "Other ": {},
+                "Oscillating & Rotary Tools": {},
+                "Drills": {},
+                "Saws": {},
+                "Sanders / Grinders": {},
+                "Nail Guns": {}
+            },
+            "Hand Tools": {
+                "Multi-Tools": {},
+                "Chisels, Files & Punches": {},
+                "Screwdrivers / Nut Drivers ": {},
+                "Safety Gear": {},
+                "Wrenches / Wrench Sets": {},
+                "Levels / Squares / Measuring ": {},
+                "Plumbing Tools": {},
+                "Hand Tool Sets": {},
+                "Screws / Bolts / Nails / Fasteners": {},
+                "Sockets & Ratchets ": {},
+                "Fastening Tools": {},
+                "Pliers ": {},
+                "Cutting Tools": {},
+                "Hammers ": {}
+            },
+            "Toolboxes": {},
+            "Mixed Tools": {}
+        },
+        "Lawn / Garden": {
+            "Pots & Planters": {},
+            "Garden Sheds / Greenhouses": {},
+            "Outdoor / Garden Decor": {},
+            "Gardening Tools": {},
+            "Pools / Hot Tubs / Saunas": {},
+            "Plants / Seeds / Fertilizers": {},
+            "Patio Furniture & Decor": {}
+        },
+        "Outdoors": {}
+    },
+    "Toys": {
+        "Games": {},
+        "Vintage / Antique Toys": {},
+        "Action Figures": {},
+        "Bears / Stuffed Animals": {},
+        "Dolls": {},
+        "Trains / Railroad": {}
+    },
+    "Computers & Electronics": {
+        "Consumer Electronics": {
+            "Home Audio": {
+                "Receivers / Amplifiers": {},
+                "Home Theater Systems": {},
+                "Speakers": {}
+            },
+            "Tablets": {},
+            "Video Games": {
+                "Consoles": {},
+                "Accessories": {},
+                "Games": {},
+                "Controllers": {}
+            },
+            "Phones": {},
+            "TVs": {},
+            "Blu-ray / DVD Players": {},
+            "Car Electronics / GPS": {},
+            "DVRs / Set-Top Boxes": {},
+            "Home Security Systems": {},
+            "Camcorders": {}
+        },
+        "Computers": {
+            "Peripherals": {
+                "Printers / Scanners": {},
+                "Keyboards / Mice": {}
+            },
+            "Laptops": {},
+            "Desktop / All-in-Ones": {},
+            "Monitors": {},
+            "Networking": {}
+        },
+        "Cameras & Camera Accessories": {
+            "Other Camera Accessories": {},
+            "Cameras": {},
+            "Lenses": {},
+            "Lighting": {}
+        }
+    },
+    "Sporting Goods": {
+        "Sporting Goods / Outdoor Recreation": {
+            "Fitness & Exercise Equipment": {},
+            "Bicycles, Scooters & More": {},
+            "Outdoor Games & Sports Equipment": {}
+        },
+        "Firearms / Weapons": {
+            "Knives / Blades": {},
+            "Ammunition": {},
+            "Airsoft / Paintball / Pellet / BB Guns": {},
+            "Rifles": {}
+        },
+        "Camping": {}
+    },
+    "Furniture": {
+        "Chairs / Stools": {},
+        "Dressers / Wardrobes / Armoires": {},
+        "Cabinets": {},
+        "Beds / Bedroom Sets": {},
+        "Tables": {},
+        "Mirrors": {},
+        "Sofas / Loveseats / Benches": {},
+        "Entertainment Centers / TV Stands": {},
+        "Dining Room Sets": {},
+        "Bookshelves": {},
+        "Deck / Patio": {},
+        "Desks / Home Office": {},
+        "Trunks / Chests": {}
+    },
+    "Kid & Baby Essentials": {
+        "Baby Products": {
+            "Furniture": {
+                "Changing Tables": {},
+                "Cribs / Bassinets": {}
+            },
+            "Clothing": {},
+            "Other Baby": {},
+            "Pregnancy & Maternity": {},
+            "Toys": {},
+            "Diapering": {},
+            "Strollers": {}
+        }
+    },
+    "Antiques & Collectibles": {
+        "Collectibles": {
+            "Radios": {},
+            "Signs": {},
+            "Decorative": {
+                "Vases / Jars": {},
+                "Planters": {},
+                "Bowls": {},
+                "Ornaments": {},
+                "Plates": {}
+            },
+            "Phones": {},
+            "Phonographs": {},
+            "Automobilia": {},
+            "Kitchen / Home": {},
+            "Advertising": {},
+            "Gas / Oil": {},
+            "Sports Cards / Memorabilia": {
+                "Trading Cards": {},
+                "Autographs": {},
+                "Memorabilia": {}
+            },
+            "Books": {},
+            "Rocks / Fossils / Minerals": {},
+            "Figurines": {},
+            "Cultures / Ethnicities": {},
+            "Tobacciana / Lighters / Tobacco Pipes": {},
+            "Comicbooks": {},
+            "Railroad": {}
+        },
+        "Antiques": {
+            "Maps / Globes": {},
+            "Clocks": {
+                "Wall": {},
+                "Cuckoo": {},
+                "Grandfather": {},
+                "Mantle": {}
+            },
+            "Antique Lamps": {}
+        },
+        "Modern Militaria": {}
+    },
+    "Boats & Aviation": {
+        "Boats": {
+            "Small Boats": {}
+        }
+    }
+}
