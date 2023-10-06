@@ -138,7 +138,6 @@ def convert_core():
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    # Check which files have been processed already
     if not os.path.exists('file_status.json'):
         # If it doesn't exist, create a new empty file_status.json
         file_status = {
@@ -147,6 +146,9 @@ def convert_core():
         }
         with open('file_status.json', 'w') as f:
             json.dump(file_status, f, indent=4)
+    else:
+        with open('file_status.json', 'r') as f:
+            file_status = json.load(f)
     
     processed_files = set(file_status["files_converted_to_database"])
     files_to_process = [file for file in os.listdir(auctions_file_loc) if file not in processed_files]
