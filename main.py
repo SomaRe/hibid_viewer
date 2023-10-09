@@ -146,9 +146,8 @@ def convert_core():
         }
         with open('file_status.json', 'w') as f:
             json.dump(file_status, f, indent=4)
-    else:
-        with open('file_status.json', 'r') as f:
-            file_status = json.load(f)
+    with open('file_status.json', 'r') as f:
+        file_status = json.load(f)
     
     processed_files = set(file_status["files_converted_to_database"])
     files_to_process = [file for file in os.listdir(auctions_file_loc) if file not in processed_files]
@@ -270,6 +269,9 @@ def process_core():
         }
         with open('file_status.json', 'w') as f:
             json.dump(file_status, f, indent=4)
+    with open('file_status.json', 'r') as f:
+        file_status = json.load(f)
+
 
     files = os.listdir(auctions_file_loc)
 
