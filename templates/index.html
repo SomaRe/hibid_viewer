@@ -7,6 +7,8 @@
     <title>Hibid Viewer</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css" rel="stylesheet">
+
     <link rel="stylesheet" href={{ url_for('static', filename='styles.css' ) }}>
 </head>
 
@@ -36,16 +38,29 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="toggle-categories">
-                <button id="toggle-button" class="btn btn-outline-info">Filter</button>
+            <div class="toggle-categories d-flex align-items-center">
+                <button id="toggle-button" class="btn btn-outline-info d-flex align-items-center">
+                    <span id="filter-text">Filter</span>
+                    <!-- <span id="filter-badge" class="badge badge-info">
+                        <i class="bi bi-funnel"></i>
+                    </span> -->
+                    <span id="filter-selected"></span>
+                </button>
+                
             </div>
-            <div class="col-12 col-md-2" id="categories-container-main">
+            <div class="col col-md-2" id="categories-container-main">
                 <div id="close-categories">X</div>
                 <div id="categories-container"></div>
-                <button id="filter-button" class="btn btn-info mt-3">save</button>
+                <button id="save-filter" class="btn btn-info mt-3">save</button>
+                <button id="clear-filter" class="btn btn-danger mt-3">clear</button>
             </div>
-            <div class="col-12 col-md-10">
-                <div id="container" class="d-flex flex-wrap justify-content-center"></div>
+            <div class="col">
+                <div id="spinner" class="spinner-container hide-spinner"> 
+                    <div class="spinner-border text-secondary" role="status">
+                    </div>
+                </div>
+                <div id="container" class="d-flex flex-wrap justify-content-center">
+                </div>
             </div>
         </div>
     </div>

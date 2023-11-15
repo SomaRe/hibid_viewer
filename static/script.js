@@ -1,8 +1,10 @@
 CHUNK_SIZE = 100;
 pageNumber = 1;
-
+let selectedCategory = null;
 let categoryFilters = [];
 
+let toggleButton = document.querySelector("#toggle-button");
+let filterSelected = document.querySelector("#filter-selected");
 pageNumberElement = document.querySelector("#pageNumber");
 
 // function to create cards
@@ -47,14 +49,12 @@ function createCollapsible(category, parentId) {
 
   for (let key in category) {
     let id = `${parentId}-${idx}`;
-
-    // Check if the category has sub-categories
     let hasSubcategories = Object.keys(category[key]).length > 0;
 
     output += `
 <div class="cat-tree-row">
-<input type="checkbox" id="chk-${id}" name="chk-${id}" value="${key}">
-<label for="chk-${id}">${key}</label>`;
+<input type="radio" id="rad-${id}" name="categoryRadio" value="${key}">
+<label for="rad-${id}">${key}</label>`;
 
     if (hasSubcategories) {
       output += `
@@ -76,50 +76,83 @@ function createCollapsible(category, parentId) {
   return output;
 }
 
-// function to get all checked categories
-function checkedCategories() {
-  const checkboxes = document.querySelectorAll('[id^="chk-"]');
-  let checkedCategories = [];
-  checkboxes.forEach((checkbox) => {
-    if (checkbox.checked) {
-      checkedCategories.push(checkbox.value);
-    }
-  });
-  fetch("/filterCategories", {
-    method: "POST",
-    body: JSON.stringify(checkedCategories),
-    headers: {
-      "Content-type": "application/json; charset=UTF-8",
-    },
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      // console.log(data);
-      document.querySelector("#container").innerHTML = "";
-      createCards(data["res"]);
-    });
-}
+// listen for change in screen size and open/close categories accordingly
+window.addEventListener("resize", () => {
+  if (window.innerWidth < 768){
+    document.querySelector("#categories-container-main").style.display = "none";
+  }
+  else{
+    document.querySelector("#categories-container-main").style.display = "block";
+  }
+})
 
-document
-  .getElementById("filter-button")
-  .addEventListener("click", checkedCategories);
+// Modify the filter button event listener to save the selected category
+document.querySelector("#save-filter").addEventListener("click", () => {
+  selectedCategory = document.querySelector('input[name="categoryRadio"]:checked')?.value;
+  // toggleButton.querySelector("#filter-badge").innerHTML = '<i class="bi bi-funnel-fill"></i>';
+  // if screen is small, close the categories
+  if (window.innerWidth < 768){
+  document.querySelector("#categories-container-main").style.display = "none";
+  }
+  filterSelected.style.display = "block";
+  filterSelected.innerText = selectedCategory;
+})
 
+// Implement clear button functionality
+document.querySelector("#clear-filter").addEventListener("click", () => {
+  // Retrieve the selected radio button
+  const selectedRadio = document.querySelector('input[name="categoryRadio"]:checked');
+  // toggleButton.querySelector("#filter-badge").innerHTML = '<i class="bi bi-funnel"></i>';
+
+  // If a radio button is selected, clear it
+  if (selectedRadio) {
+    selectedRadio.checked = false;
+  }
+
+  // Reset the selectedCategory variable
+  selectedCategory = null;
+
+  // Reset the filterSelected text
+  filterSelected.style.display = "none";
+  filterSelected.innerText = "None";
+});
+
+
+document.querySelector("#toggle-button").addEventListener("click", () => {
+  document.querySelector("#categories-container-main").style.display = "block";
+});
+
+// FIXME: closing categories makes it so that even in desktop mode, the categories are not visible
+
+document.querySelector("#close-categories").addEventListener("click", () => {
+  document.querySelector("#categories-container-main").style.display = "none";
+});
+
+// Update the search functionality
 document.getElementById("search").addEventListener("click", function (event) {
   event.preventDefault();
   const searchQuery = document.getElementById("searchQuery").value;
-  fetch("/search", {
+  document.getElementById('spinner').classList.remove('hide-spinner');
+  document.querySelector("#container").innerHTML = "";
+
+  let requestData = {
+    searchQuery: searchQuery,
+    category: selectedCategory
+  };
+
+  fetch("/searchAndFilter", {
     method: "POST",
-    body: JSON.stringify(searchQuery),
+    body: JSON.stringify(requestData),
     headers: {
       "Content-type": "application/json; charset=UTF-8",
     },
   })
-    .then((response) => response.json())
-    .then((data) => {
-      // console.log(data);
-      document.querySelector("#container").innerHTML = "";
-      createCards(data["res"]);
-    });
+  .then((response) => response.json())
+  .then((data) => {
+    document.getElementById('spinner').classList.add('hide-spinner');
+    document.querySelector("#container").innerHTML = "";
+    createCards(data["res"]);
+  });
 });
 
 document
@@ -138,33 +171,6 @@ document
     }
   });
 
-document.querySelector("#toggle-button").addEventListener("click", () => {
-  document.querySelector("#categories-container-main").style.display = "block";
-});
-
-document.querySelector("#close-categories").addEventListener("click", () => {
-  document.querySelector("#categories-container-main").style.display = "none";
-});
-
-document.querySelector("#filter-button").addEventListener("click", () => {
-  // find all input type checkbox, checked ones values are added to categoryFilters
-  categoryFilters = [];
-  document.querySelectorAll('input[type="checkbox"]:checked').forEach((el) => {
-    categoryFilters.push(el.value);
-  });
-  fetch("/filterCategories", {
-    method: "POST",
-    body: JSON.stringify(categoryFilters),
-    headers: {
-      "Content-type": "application/json; charset=UTF-8",
-    },
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      document.querySelector("#container").innerHTML = "";
-      createCards(data["res"]);
-    });
-});
 
 // as page number is changed, change the cards
 pageNumberElement.addEventListener("change", function (event) {

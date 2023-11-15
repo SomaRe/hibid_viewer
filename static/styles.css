@@ -2,6 +2,36 @@
     margin: 0 2vw;
 }
 
+.spinner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+}
+
+.hide-spinner {
+    display: none !important;
+}
+
+#filter-text{
+    padding: 2px;
+}
+
+#filter-selected{
+    margin-left: 5px;
+    display: none;
+    font-weight: bold;
+    background-color: #17a2b8;
+    color: white;
+    font-size: 9px;
+    border-radius: 10px;
+    padding: 4px;
+}
+
+#filter-badge{
+    color: #17a2b8;
+}
+
 .card{
     width: 250px;
     cursor: pointer;
@@ -44,6 +74,8 @@
     display: none;
 }
 
+
+
 .cat-plus-btn{
     padding: 0.1rem;
     line-height: 1;
@@ -78,7 +110,6 @@
         display: block;
     }
     #categories-container-main{
-        display: none;
         position: fixed;
         top: 0;
         overflow-y: scroll;

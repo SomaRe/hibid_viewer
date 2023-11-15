@@ -2,7 +2,6 @@
 import os
 import json
 from datetime import datetime
-import pandas as pd
 from flask import Flask, render_template, request, jsonify
 
 from sqlalchemy import create_engine, Column, Integer, String, Boolean, ForeignKey, Float, DateTime
@@ -418,22 +417,31 @@ def filterCategories():
         session.close()
     return jsonify({'res':results})
 
-
-@app.route('/search', methods=['POST'])
-def search():
+@app.route('/searchAndFilter', methods=['POST'])
+def search_and_filter():
     if request.method == 'POST':
         data = request.get_json()
-        # query database for 100 items with keywords from list l
+        search_query = data.get('searchQuery', '')
+        category = data.get('category', None)
+
         Session = sessionmaker(bind=engine)
         session = Session()
         results = session.query(Items)
-        results = results.filter(Items.lead.like('%' + data + '%'))
+
+        # Apply category filter if category is provided
+        if category:
+            results = results.filter(Items.category.like('%' + category + '%'))
+
+        # Apply search filter
+        results = results.filter(Items.lead.like('%' + search_query + '%'))
+
         total_results = results.count()
         results = results.limit(100).all()
         results = map_lot_attributes(results)
-        # close session
+        
         session.close()
-    return jsonify({'res':results, 'total_results':total_results})
+
+    return jsonify({'res': results, 'total_results': total_results})
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=port, threaded=True, debug=True)
