@@ -151,7 +151,7 @@ function handleCardClick(event) {
 // Function to handle search functionality
 function performSearch(event) {
   event.preventDefault();
-  // document.getElementById("searchButton").disabled = true; 
+  document.getElementById("searchButton").disabled = true; 
   pageNumber = 1;
   pageNumberElement.value = pageNumber;
   fetchDataAndUpdateUI(false);
