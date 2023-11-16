@@ -1,5 +1,6 @@
 #container{
     margin: 0 2vw;
+    justify-content: space-around;
 }
 
 .spinner-container {
@@ -18,8 +19,8 @@
 }
 
 #filter-selected{
-    margin-left: 5px;
     display: none;
+    margin-left: 5px;
     font-weight: bold;
     background-color: #17a2b8;
     color: white;
@@ -74,8 +75,6 @@
     display: none;
 }
 
-
-
 .cat-plus-btn{
     padding: 0.1rem;
     line-height: 1;
@@ -90,12 +89,12 @@
 }
 
 /* Add CSS to control the categories-container's visibility */
-@media (max-width: 767px) {
+@media (max-width: 992px) {
     #container{
         margin: 0;
     }
     .card{
-        width: 150px;
+        width: 180px;
         font-size: 80%;
     }
     .card h5{
@@ -110,12 +109,13 @@
         display: block;
     }
     #categories-container-main{
+        display: none;
         position: fixed;
         top: 0;
         overflow-y: scroll;
         z-index: 100;
-        background-color: white;
-         width: 100vw;
+        background-color: rgb(33,37,41);
+        width: 100vw;
         height: 100vh;
     }
     

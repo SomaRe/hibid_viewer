@@ -5,9 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hibid Viewer</title>
+    <link rel="icon" href={{ url_for('static', filename='hibid-tracker-logo.png' ) }} type="image/x-icon" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css" rel="stylesheet">
 
     <link rel="stylesheet" href={{ url_for('static', filename='styles.css' ) }}>
 </head>
@@ -29,7 +30,7 @@
                     <form class="d-flex">
                         <input class="form-control me-2" type="search" placeholder="Search" id="searchQuery"
                             aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit" id="search">Search</button>
+                        <button class="btn btn-outline-success" type="submit" id="searchButton" onclick="performSearch(event)">Search</button>
                     </form>
                 </div>
             </div>
@@ -44,9 +45,8 @@
                     <!-- <span id="filter-badge" class="badge badge-info">
                         <i class="bi bi-funnel"></i>
                     </span> -->
-                    <span id="filter-selected"></span>
                 </button>
-                
+                <span id="filter-selected">none</span>
             </div>
             <div class="col col-md-2" id="categories-container-main">
                 <div id="close-categories">X</div>
@@ -59,7 +59,7 @@
                     <div class="spinner-border text-secondary" role="status">
                     </div>
                 </div>
-                <div id="container" class="d-flex flex-wrap justify-content-center">
+                <div id="container" class="d-flex flex-wrap">
                 </div>
             </div>
         </div>

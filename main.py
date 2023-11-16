@@ -4,7 +4,7 @@ import json
 from datetime import datetime
 from flask import Flask, render_template, request, jsonify
 
-from sqlalchemy import create_engine, Column, Integer, String, Boolean, ForeignKey, Float, DateTime
+from sqlalchemy import create_engine, Column, Integer, String, Boolean, ForeignKey, Float, DateTime, desc
 from sqlalchemy.orm import declarative_base, sessionmaker
 from sqlalchemy.orm.exc import NoResultFound
 
@@ -374,74 +374,41 @@ def processAll():
     return process_core()
 
 
-
-# read json file from auctions folder to analyze to front end
-@app.route('/data')
-def data():
-    # read from database
-    Session = sessionmaker(bind=engine)
-    session = Session()
-
-    # query database for 100 items
-    results = session.query(Items).limit(100).all()
-
-    results = map_lot_attributes(results)
-
-    # close session
-    session.close()
-
-    return jsonify({'res':results})
-
-
 @app.route('/getCategories')
 def getCategories():
     with open('categories.json', 'r') as f:
         categories = json.load(f)
     return jsonify(categories)
 
+@app.route('/fetchData', methods=['POST'])
+def fetch_data():
+    data = request.get_json()
+    if not data:
+        return jsonify({'error': 'No data provided'}), 400
 
-@app.route('/filterCategories', methods=['POST'])
-def filterCategories():
-    if request.method == 'POST':
-        data = request.get_json()
-        l = list(data)
-        # query database for 100 items with keywords from list l
-        Session = sessionmaker(bind=engine)
-        session = Session()
-        results = session.query(Items)
-        for i in range(len(l)):
-            results = results.filter(Items.category.like('%' + l[i] + '%'))
-        results = results.limit(100).all()
-        results = map_lot_attributes(results)
-        # close session
-        session.close()
-    return jsonify({'res':results})
+    size = int(data.get('chunkSize', 100))
+    page = int(data.get('pageNumber', 1))
+    search_query = data.get('searchQuery', '')
+    category = data.get('category', '')
 
-@app.route('/searchAndFilter', methods=['POST'])
-def search_and_filter():
-    if request.method == 'POST':
-        data = request.get_json()
-        search_query = data.get('searchQuery', '')
-        category = data.get('category', None)
+    Session = sessionmaker(bind=engine)
+    session = Session()
 
-        Session = sessionmaker(bind=engine)
-        session = Session()
-        results = session.query(Items)
+    query = session.query(Items).order_by(desc(Items.id))
 
-        # Apply category filter if category is provided
-        if category:
-            results = results.filter(Items.category.like('%' + category + '%'))
+    # Apply filters
+    if category:
+        query = query.filter(Items.category.like('%' + category + '%'))
+    if search_query:
+        query = query.filter(Items.lead.like('%' + search_query + '%'))
 
-        # Apply search filter
-        results = results.filter(Items.lead.like('%' + search_query + '%'))
-
-        total_results = results.count()
-        results = results.limit(100).all()
-        results = map_lot_attributes(results)
-        
-        session.close()
+    total_results = query.count()
+    results = query.limit(size).offset((page-1)*size).all()
+    results = map_lot_attributes(results)
+    session.close()
 
     return jsonify({'res': results, 'total_results': total_results})
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=port, threaded=True, debug=True)
