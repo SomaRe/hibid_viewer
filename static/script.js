@@ -155,6 +155,7 @@ function performSearch(event) {
   document.getElementById("searchButton").disabled = true; 
   pageNumber = 1;
   pageNumberElement.value = pageNumber;
+  container.innerHTML = "";
   fetchDataAndUpdateUI(false);
 }
 
