@@ -36,6 +36,7 @@
 .card{
     width: 250px;
     cursor: pointer;
+    margin: 0 2px;
 }
 
 .card img{
