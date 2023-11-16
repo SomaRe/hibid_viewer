@@ -5,6 +5,7 @@ const pageNumberElement = document.querySelector("#pageNumber");
 const totalPagesElement = document.querySelector("#totalPages");
 const categoriesContainerMain = document.querySelector("#categories-container-main");
 const container = document.querySelector("#container");
+const spinner = document.querySelector("#spinner");
 
 // Page and filter variables
 let pageNumber = 1;
@@ -166,6 +167,7 @@ function handlePageChange() {
 
 // Function to fetch data and update UI
 function fetchDataAndUpdateUI(isInitialLoad = true) {
+  spinner.classList.remove('hide-spinner');
   const searchQuery = isInitialLoad ? "" : document.querySelector("#searchQuery").value;
   const category = selectedCategory;
 
@@ -185,8 +187,9 @@ function fetchDataAndUpdateUI(isInitialLoad = true) {
   })
   .then((response) => response.json())
   .then((data) => {
+    spinner.classList.add('hide-spinner');
     createCards(data["res"]); // Update UI with the data
-    totalPagesElement.innerText = Math.ceil(data["total_results"] / chunkSize); // Update pagination
+    totalPagesElement.innerText = Math.ceil(data["total_results"] / chunkSize);
     if (!isInitialLoad) {
       document.getElementById("searchButton").disabled = false;
     }
