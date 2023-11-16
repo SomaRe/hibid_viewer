@@ -35,7 +35,7 @@ function createCards(data) {
         <div class="card-body">
           <p class="card-text text">Date: ${item["eventDateEnd"]}</p>
           <div class="d-flex justify-content-between">
-            <p class="card-text fs-6 text">High Bid: ${item["highBid"]}</p>
+            <p class="card-text text">High Bid: ${item["highBid"]}</p>
           </div>
         </div>
       </div>`;
