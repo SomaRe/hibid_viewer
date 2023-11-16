@@ -92,25 +92,28 @@ function saveFilter() {
     categoriesContainerMain.style.display = "none";
   }
   filterSelected.style.display = "block";
-  filterSelected.innerText = selectedCategory;
-  fetchDataAndUpdateUI(false);
+  if (selectedCategory != null) {
+    filterSelected.innerText = selectedCategory;
+    fetchDataAndUpdateUI(false);
+  } else {
+    filterSelected.innerText = "none";
+  }
 }
 
 // Function to clear the selected filter
 function clearFilter() {
   // Retrieve the selected radio button
   const selectedRadio = document.querySelector('input[name="categoryRadio"]:checked');
-  // toggleButton.querySelector("#filter-badge").innerHTML = '<i class="bi bi-funnel"></i>';
-
+  selectedCategory = null;
   // If a radio button is selected, clear it
   if (selectedRadio) {
     selectedRadio.checked = false;
+    fetchDataAndUpdateUI(false);
   }
 
   if (window.innerWidth < 992){
     categoriesContainerMain.style.display = "none";
   }
-  selectedCategory = null;
   filterSelected.innerText = "none";
 }
 
