@@ -3,17 +3,18 @@ const toggleButton = document.querySelector("#toggle-button");
 const filterSelected = document.querySelector("#filter-selected");
 const pageNumberElement = document.querySelector("#pageNumber");
 const totalPagesElement = document.querySelector("#totalPages");
+const minFilter = document.querySelector("#min-price-filter");
+const maxFilter = document.querySelector("#max-price-filter");
 const categoriesContainerMain = document.querySelector("#categories-container-main");
 const container = document.querySelector("#container");
 const spinner = document.querySelector("#spinner");
 
 // Page and filter variables
 let pageNumber = 1;
+let minFilterValue = 0;
+let maxFilterValue = 0;
 let selectedCategory = null;
-
-// TODO: For future use or retired
 let chunkSize = 100;
-// let categoryFilters = [];
 
 
 // function to create cards
@@ -87,6 +88,8 @@ function handleResize() {
 // Function to save the selected filter
 function saveFilter() {
   selectedCategory = document.querySelector('input[name="categoryRadio"]:checked')?.value;
+  minFilterValue = minFilter.value;
+  maxFilterValue = maxFilter.value;
   // if screen is small, close the categories
   if (window.innerWidth < 992){
     categoriesContainerMain.style.display = "none";
@@ -105,6 +108,10 @@ function clearFilter() {
   // Retrieve the selected radio button
   const selectedRadio = document.querySelector('input[name="categoryRadio"]:checked');
   selectedCategory = null;
+  minFilterValue = "";
+  maxFilterValue = "";
+  minFilter.value = "";
+  maxFilter.value = "";
   // If a radio button is selected, clear it
   if (selectedRadio) {
     selectedRadio.checked = false;
@@ -159,6 +166,8 @@ function performSearch(event) {
   pageNumber = 1;
   pageNumberElement.value = pageNumber;
   container.innerHTML = "";
+  minFilterValue = minFilter.value;
+  maxFilterValue = maxFilter.value;
   fetchDataAndUpdateUI(false);
 }
 
@@ -179,7 +188,9 @@ function fetchDataAndUpdateUI(isInitialLoad = true) {
     chunkSize: chunkSize,
     pageNumber: pageNumber,
     searchQuery: searchQuery,
-    category: category
+    category: category,
+    minPrice: minFilterValue,
+    maxPrice: maxFilterValue
   };
 
   fetch("/fetchData", {

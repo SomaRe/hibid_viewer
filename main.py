@@ -390,6 +390,17 @@ def fetch_data():
     page = int(data.get('pageNumber', 1))
     search_query = data.get('searchQuery', '')
     category = data.get('category', '')
+    min_price = data.get('minPrice', '')
+    max_price = data.get('maxPrice', '')
+
+    print({
+        'size': size,
+        'page': page,
+        'search_query': search_query,
+        'category': category,
+        'min_price': min_price,
+        'max_price': max_price
+    })
 
     Session = sessionmaker(bind=engine)
     session = Session()
@@ -397,6 +408,13 @@ def fetch_data():
     query = session.query(Items).order_by(desc(Items.id))
 
     # Apply filters
+    if min_price and max_price:
+        query = query.filter(Items.lotState__highBid.between(min_price, max_price))
+    elif min_price:
+        query = query.filter(Items.lotState__highBid >= min_price)
+    elif max_price:
+        query = query.filter(Items.lotState__highBid <= max_price)
+    
     if category:
         query = query.filter(Items.category.like('%' + category + '%'))
     if search_query:

@@ -50,6 +50,17 @@
             </div>
             <div class="col col-md-2" id="categories-container-main">
                 <div id="close-categories">X</div>
+                <div id="price-filter" class="d-flex flex-column">
+                    <div class="input-group mt-lg-2 mt-5 mb-1">
+                        <span class="input-group-text">$</span>
+                        <input type="text" placeholder="min" class="form-control" id="min-price-filter">
+                      </div>
+                    <div class="input-group mb-1">
+                        <span class="input-group-text">$</span>
+                        <input type="text" placeholder="max" class="form-control" id="max-price-filter">
+                    </div>
+                </div>
+                <hr>
                 <div id="categories-container"></div>
                 <button id="save-filter" class="btn btn-info mt-3">save</button>
                 <button id="clear-filter" class="btn btn-danger mt-3">clear</button>
