@@ -4,3 +4,4 @@ PORT.txt
 AUCTIONS_FILE_LOC.txt
 categories.json
 file_status.json
+db_speed_test.py
