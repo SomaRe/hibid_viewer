@@ -5,3 +5,5 @@ AUCTIONS_FILE_LOC.txt
 categories.json
 file_status.json
 db_speed_test.py
+migrate_to_fts.py
+__pycache__

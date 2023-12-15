@@ -4,7 +4,7 @@ import json
 from datetime import datetime
 from flask import Flask, render_template, request, jsonify
 
-from sqlalchemy import create_engine, Column, Integer, String, Boolean, ForeignKey, Float, DateTime, desc
+from sqlalchemy import create_engine, Column, Integer, String, Boolean, ForeignKey, Float, DateTime, desc, text
 from sqlalchemy.orm import declarative_base, sessionmaker
 from sqlalchemy.orm.exc import NoResultFound
 
@@ -87,11 +87,23 @@ class Items(Base):
     lotState__productUrl = Column(String)
     lotState__quantitySold = Column(Integer)
 
+    @staticmethod
+    def create_fts_table(engine):
+        fts_table_query = text("""
+            CREATE VIRTUAL TABLE IF NOT EXISTS items_fts USING fts5(
+                lead, category, content='items', content_rowid='id'
+            );
+        """)
+        with engine.connect() as connection:
+            connection.execute(fts_table_query)
+
 # Create an SQLite database
 engine = create_engine('sqlite:///data.sqlite')
 
 # Create the table in the database
 Base.metadata.create_all(engine)
+Items.create_fts_table(engine)
+
 
 def unique_categories(categories):
     unique_parts = {part for category in categories for part in category['fullCategory'].split(" - ")}
@@ -240,6 +252,25 @@ def convert_core():
     # perform a bulk insert
     if items_data_list:
         session.bulk_save_objects(items_data_list)
+        session.commit()
+
+        # Prepare data for FTS table insertion
+        fts_data_list = [
+            {
+                'id': item.id,
+                'lead': item.lead,
+                'category': item.category
+            }
+            for item in items_data_list
+        ]
+
+        # Bulk insert into FTS table
+        fts_insert_query = """
+        INSERT INTO items_fts(rowid, lead, category) VALUES(:id, :lead, :category)
+        """
+        session.execute(fts_insert_query, fts_data_list)
+
+        # Commit the FTS insertions
         session.commit()
 
     with open('file_status.json', 'w') as f:
