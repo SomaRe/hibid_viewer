@@ -1,6 +1,7 @@
 // Constants for DOM elements
 const toggleButton = document.querySelector("#toggle-button");
-const filterSelected = document.querySelector("#filter-selected");
+const categorySelected = document.querySelector("#category-selected");
+const priceSelected = document.querySelector("#price-selected");
 const pageNumberElement = document.querySelector("#pageNumber");
 const totalPagesElement = document.querySelector("#totalPages");
 const minFilter = document.querySelector("#min-price-filter");
@@ -71,7 +72,7 @@ function createCollapsible(category, parentId) {
 
 // Event listeners for UI elements
 function setUpEventListeners() {
-  window.addEventListener("resize", handleResize);
+  // window.addEventListener("resize", handleResize);
   toggleButton.addEventListener("click", toggleCategories);
   container.addEventListener("click", handleCardClick);
   document.querySelector("#save-filter").addEventListener("click", saveFilter);
@@ -81,25 +82,31 @@ function setUpEventListeners() {
 }
 
 // Function to handle screen resize event
-function handleResize() {
-  categoriesContainerMain.style.display = window.innerWidth < 992 ? "none" : "block";
-}
+// function handleResize() {
+//   categoriesContainerMain.style.display = window.innerWidth < 992 ? "none" : "block";
+// }
 
 // Function to save the selected filter
 function saveFilter() {
   selectedCategory = document.querySelector('input[name="categoryRadio"]:checked')?.value;
-  minFilterValue = minFilter.value;
-  maxFilterValue = maxFilter.value;
+  minFilterValue = minFilter.value || 0;
+  maxFilterValue = maxFilter.value || 'max';
   // if screen is small, close the categories
   if (window.innerWidth < 992){
     categoriesContainerMain.style.display = "none";
   }
-  filterSelected.style.display = "block";
+  categorySelected.style.display = "block";
+  priceSelected.style.display = "block";
   if (selectedCategory != null) {
-    filterSelected.innerText = selectedCategory;
+    categorySelected.innerText = selectedCategory;
+    priceSelected.innerText = `min: $${minFilterValue} - max: $${maxFilterValue}`;
+    if (maxFilterValue <= 0 && minFilterValue <= 0) {
+      priceSelected.style.display = "none";
+    }
     fetchDataAndUpdateUI(false);
   } else {
-    filterSelected.innerText = "none";
+    categorySelected.innerText = "none";
+    priceSelected.style.display = "none";
   }
 }
 
@@ -108,8 +115,8 @@ function clearFilter() {
   // Retrieve the selected radio button
   const selectedRadio = document.querySelector('input[name="categoryRadio"]:checked');
   selectedCategory = null;
-  minFilterValue = "";
-  maxFilterValue = "";
+  minFilterValue = 0;
+  maxFilterValue = 0;
   minFilter.value = "";
   maxFilter.value = "";
   // If a radio button is selected, clear it
@@ -121,7 +128,8 @@ function clearFilter() {
   if (window.innerWidth < 992){
     categoriesContainerMain.style.display = "none";
   }
-  filterSelected.innerText = "none";
+  categorySelected.innerText = "none";
+  priceSelected.style.display = "none";
 }
 
 // Function to fetch and load categoty tree
@@ -168,6 +176,10 @@ function performSearch(event) {
   container.innerHTML = "";
   minFilterValue = minFilter.value;
   maxFilterValue = maxFilter.value;
+  if (minFilterValue > 0 || maxFilterValue > 0) {
+    priceSelected.style.display = "block";
+    priceSelected.innerText = `$${minFilterValue} - $${maxFilterValue}`;
+  }
   fetchDataAndUpdateUI(false);
 }
 
